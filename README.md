@@ -18,3 +18,41 @@ Navigation Conditionnelle: La Navbar et les Routes sont dynamiques et s'adaptent
 Pages Fonctionnelles:
 Les formulaires d'Inscription et de Connexion sont des Formulaires Contrôlés qui gèrent l'envoi des données et le feedback utilisateur de manière asynchrone.
 Le Dashboard Administrateur récupère et affiche la liste complète des utilisateurs et inclut les fonctionnalités de Modification et de Suppression (Delete) sans recharger la page.
+
+
+
+Project Description: Full-Stack Web Application
+This project is a Full-Stack Application designed to demonstrate a separated Backend/Frontend architecture, focusing on authentication security and efficient CRUD operations (Create, Read, Update, Delete). The system follows the Separation of Concerns (MVC) principle, ensuring each component has a defined role, from database management to the dynamic UI.
+
+Backend: The Secure Engine
+The Backend (built with Node.js, Express, and MySQL) acts as a RESTful API. Its main role is secure data management and authorization:
+
+Secure Authentication: User passwords are saved irreversibly using hashing (bcrypt).
+
+JWT Authorization: The system uses JSON Web Tokens (JWT). After login, the server issues a signed token used by Middlewares to verify access:
+
+Token Check: Is the user logged in?
+
+Role Check: Is the user an Admin?
+
+CRUD Logic: The API provides dedicated endpoints for all user management operations (registration, login, modification, and deletion).
+
+Frontend: The Dynamic Interface
+The Frontend (built with React) is a fast and responsive Single Page Application (SPA) that communicates with the Backend via HTTP:
+
+Session Management: After login, the JWT Token and Role are saved in localStorage to keep the session active.
+
+Conditional Navigation: The Navbar and Routes are dynamic. They adapt to the user’s state (showing "Logout" if connected, or "Admin Dashboard" only for Admins).
+
+Functional Pages: The Registration and Login forms are Controlled Components that handle data submission and asynchronous user feedback.
+
+Admin Dashboard: It fetches and displays the complete user list, including Edit and Delete features without reloading the page.
+
+Glossario Tecnico per la lezione:
+Separation of Concerns: Separazione delle responsabilità.
+
+Hashing (bcrypt): Hachage (il processo di rendere i dati irrecuperabili).
+
+Endpoints: I punti di accesso dell'API (le rotte).
+
+Fetch: Recuperare dati (quando il frontend chiama il backend).
