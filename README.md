@@ -17,5 +17,5 @@ Gestion de Session: Après la connexion, le Jeton JWT et le Rôle sont sauvegard
 Navigation Conditionnelle: La Navbar et les Routes sont dynamiques et s'adaptent automatiquement à l'état de l'utilisateur (affichent "Déconnexion" si connecté; affichent "Dashboard Admin" uniquement si l'utilisateur a le rôle Admin).
 Pages Fonctionnelles:
 Les formulaires d'Inscription et de Connexion sont des Formulaires Contrôlés qui gèrent l'envoi des données et le feedback utilisateur de manière asynchrone.
-Le Dashboard Administrateur récupère et affiche la liste complète des utilisateurs et inclut les fonctionnalités de Modification et de Suppression (Delete) sans recharger la page.
+Le Dashboard Administrateur récupère et affiche la liste complète des utilisateurs et inclut les fonctionnalités de Modification et de Suppression (Delete) sans recharger la page...
 
