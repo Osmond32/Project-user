@@ -1,7 +1,7 @@
 Ce projet est une Application Full-Stack conçue pour illustrer la mise en œuvre d'une architecture Backend/Frontend séparée, avec un accent principal sur la sécurité de 
 l'authentification et l'efficacité des opérations CRUD (Create, Read, Update, Delete).
 Le système est construit autour d'un principe de séparation des préoccupations (MVC), garantissant que chaque
-composant a un rôle bien défini, de la gestion de la base de données à l'interface utilisateur dynamique.
+composant a un rôle bien défini, de la gestion de la base de données à l'interface utilisateur dynamique...
 
 Backend: Le Moteur Sécurisé
 Le Backend (développé avec Node.js, Express et MySQL) agit comme une API RESTful. Son rôle principal est la gestion sécurisée des données et de l'autorisation:
