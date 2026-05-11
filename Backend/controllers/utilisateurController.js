@@ -39,8 +39,6 @@ export const loginUtilisateur = async (req, res) => {
     //  Estrazione delle credenziali dalla richiesta POST
     const { email, motDePasse } = req.body;
 
-
-
     try {
 
         const utilisateurExistant = await utilisateurModel.getUtilisateurByEmail(email);

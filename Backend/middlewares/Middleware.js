@@ -35,16 +35,14 @@ export const checkAuth = (req, res, next) => {
     }
 };
 
-// Funzione aggiuntiva per l'Autorizzazione (Controllo del Ruolo)
+
 export const checkAdmin = (req, res, next) => {
-    // Il middleware checkAuth ha già verificato il token e ha messo i dati in req.user
     
-    // Controllo del Ruolo: Verifica se il ruolo è 'admin'
     if (req.user && req.user.role === 'admin') {
-        // Se è Admin, passa al Controller
+        
         next();
     } else {
-        // 403: Proibito (L'utente è loggato, ma non ha i permessi necessari)
-        return res.status(403).json({ message: "Accesso proibito. Richiede privilegi di amministratore." });
+        
+        return res.status(403).json({ message: "Access denied. Admin privileges required." });
     }
 };

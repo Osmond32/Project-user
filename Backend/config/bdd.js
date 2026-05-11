@@ -1,23 +1,24 @@
-// import mysql2 module
 import mysql from 'mysql2/promise';
+import 'dotenv/config'; // Questo carica le variabili dal file .env
 
-// creation de la connexion à la base de données
-const connexion = mysql.createPool({
-    //parametre de connexion
-    host:"localhost",
-    user:"root",
-    password:"Pixelwhisky",
-    database:"gestione_utenti", // modificare sempre il nome della database che ho creato
+// Usiamo la stringa di connessione (URI) che è più pratica per il cloud
+const connectionString = process.env.MYSQL_URL || {
+    host: "localhost",
+    user: "root",
+    password: "Pixelwhisky",
+    database: "gestione_utenti",
     port: 3306
-});
+};
 
-// test de la connexion
+const connexion = mysql.createPool(connectionString);
+
+// Test della connessione
 connexion.getConnection()
-// si la connexion est réussie
-    .then(() => 
-    console.log("database OK 🟢​"))
-    // si la connexion échoue
-    .catch(error => console.error("database KO 🔴​", error));
+    .then(() => console.log("database OK 🟢 (Cloud/Env)"))
+    .catch(error => {
+        console.error("database KO 🔴", error);
+        // Piccolo trucco: se fallisce, stampiamo l'URL usato (senza password) per debug
+        console.log("Stai provando a connetterti a:", process.env.MYSQL_URL ? "URL Cloud" : "Localhost");
+    });
 
-// exportation de la connexion
 export default connexion;
