@@ -10,7 +10,7 @@ const AdminDashboard = () => {
 
     // securitè
     useEffect(() => {
-        // Recupera le chiavi di sessione
+        // Recuperer le token et le role de l'utilisateur depuis le localStorage
         const token = localStorage.getItem('token');
         const userRole = localStorage.getItem('userRole');
 

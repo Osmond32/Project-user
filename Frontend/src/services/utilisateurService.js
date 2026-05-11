@@ -11,7 +11,7 @@ export const register = async (userData) => {
     try {
         const response = await axios.post(API_URL + '/addUtilisateur', userData);
 
-        
+
         return {
             success: true,
             data: response.data
@@ -56,8 +56,8 @@ export const login = async (userData) => {
 }
 
 export const getUserById = async (userId) => {
-    const token = localStorage.getItem('token'); 
-    
+    const token = localStorage.getItem('token');
+
     if (!token) {
         return { success: false, message: "Utente non autenticato." };
     }
@@ -65,53 +65,12 @@ export const getUserById = async (userId) => {
     try {
         const config = {
             headers: {
-                Authorization: 'Bearer ' + token 
-            }
-        };
-
-        // Chiamata GET all'endpoint /utilisateurById/:id
-        const response = await axios.get(API_URL + '/utilisateurById/' + userId, config); 
-        
-        return { 
-            success: true, 
-            data: response.data 
-        };
-        
-    } catch (error) {
-        let errorMessage = "Errore durante il recupero dell'utente per l'editing.";
-
-        if (error.response) {
-            errorMessage = error.response.data.message || error.message; 
-        }
-        
-        return { 
-            success: false, 
-            message: errorMessage 
-        };
-    }
-};
-
-
-export const getAllUsers = async () => {
-    // Recupera il Token JWT dal browser
-    const token = localStorage.getItem('token');
-
-
-    if (!token) {
-        // Se il token non c'è, restituisce un errore senza fare la chiamata API
-        return { success: false, message: "Utente non autenticato. Effettuare il login." };
-    }
-
-    try {
-        // Configurazione dell'Header Authorization (Essenziale per la sicurezza)
-        const config = {
-            headers: {
                 Authorization: 'Bearer ' + token
             }
         };
 
-        // 4. Chiamata GET all'endpoint protetto
-        const response = await axios.get(API_URL + '/allUtilisateurs', config);
+        // Chiamata GET all'endpoint /utilisateurById/:id
+        const response = await axios.get(API_URL + '/utilisateurById/' + userId, config);
 
         return {
             success: true,
@@ -119,13 +78,45 @@ export const getAllUsers = async () => {
         };
 
     } catch (error) {
-        let errorMessage = "Errore durante il recupero degli utenti.";
+        let errorMessage = "Errore durante il recupero dell'utente per l'editing.";
+
+        if (error.response) {
+            errorMessage = error.response.data.message || error.message;
+        }
+
+        return {
+            success: false,
+            message: errorMessage
+        };
+    }
+};
+
+
+export const getAllUsers = async () => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+
+        return { success: false, message: "Utilisateur non authentifié. Connectez-vous." };
+    }
+    try {
+        const config = {
+            headers: {
+                Authorization: 'Bearer ' + token
+            }
+        };
+
+        const response = await axios.get(API_URL + '/allUtilisateurs', config);
+        return {
+            success: true,
+            data: response.data
+        };
+    } catch (error) {
+        let errorMessage = "Error pendant la récupération des utilisateurs.";
 
         if (error.response) {
             // Include l'errore 403 Forbidden dal Middleware Admin
             errorMessage = error.response.data.message || error.message;
         }
-
         return {
             success: false,
             message: errorMessage
@@ -173,7 +164,7 @@ export const deleteUser = async (userId) => {
 
 
 
-export const updateUser = async (userId, userData) => { 
+export const updateUser = async (userId, userData) => {
     const token = localStorage.getItem('token');
 
     if (!token) {
@@ -190,7 +181,7 @@ export const updateUser = async (userId, userData) => {
 
         return {
             success: true,
-            message: response.data.message 
+            message: response.data.message
         };
 
     } catch (error) {
